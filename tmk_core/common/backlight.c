@@ -123,3 +123,12 @@ uint8_t get_backlight_level(void)
 {
     return backlight_config.level;
 }
+
+/** \brief Get backlight level
+ *
+ * FIXME: needs doc
+ */
+bool get_backlight_enable(void)
+{
+    return backlight_config.enable;
+}

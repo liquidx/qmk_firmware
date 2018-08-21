@@ -37,5 +37,6 @@ void backlight_step(void);
 void backlight_set(uint8_t level);
 void backlight_level(uint8_t level);
 uint8_t get_backlight_level(void);
+bool get_backlight_enable(void);
 
 #endif
