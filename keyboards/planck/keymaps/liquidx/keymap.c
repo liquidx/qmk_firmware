@@ -30,6 +30,8 @@ enum planck_layers {
 enum planck_keycodes {
   CS_DEBUG = SAFE_RANGE,
   BACKLIT,
+  LITE_ON,
+  LITE_OFF,
   SND_MARIO,
   SND_ZELDA0,
   SND_ZELDA1,
@@ -75,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
     KC_DEL, SND_MARIO, SND_ZELDA0, SND_ZELDA1, SND_1UP, SND_ROOM, _______,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
     _______, _______, _______,  _______, _______, _______, _______,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
-    CS_DEBUG, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    LITE_ON, LITE_OFF, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Raise
@@ -141,11 +143,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case LITE_ON:
+      if (record->event.pressed) {
+        #ifdef BACKLIGHT_ENABLE
+          backlight_level(1);
+          #endif
+      }
+      return false;
+    case LITE_OFF:
+      if (record->event.pressed) {
+        #ifdef BACKLIGHT_ENABLE
+          backlight_level(0);
+        #endif
+      }
+      return false;
     case BACKLIT:
       if (record->event.pressed) {
         register_code(KC_RSFT);
         #ifdef BACKLIGHT_ENABLE
-          backlight_step();
+          backlight_toggle();
         #endif
         #ifdef KEYBOARD_planck_rev5
           PORTE &= ~(1<<6);
@@ -193,6 +209,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         #endif
       }
       return false;
+  }
+
+  // silly led thing
+  if (get_backlight_enable()) {
+    if (record->event.pressed) {
+      backlight_level(2);
+    } else {
+      backlight_level(1);
+    }
   }
   return true;
 }
