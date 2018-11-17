@@ -664,7 +664,7 @@ void led_matrix_task(void)
     if (led_cur != lede)
     {
         //m15_off; //debug profiling
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
         led_matrix_run((led_setup_t*)led_setups[led_animation_id]);
 #else
         led_matrix_run();

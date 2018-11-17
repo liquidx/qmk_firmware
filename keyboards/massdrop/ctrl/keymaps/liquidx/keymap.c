@@ -71,7 +71,7 @@ void matrix_scan_user(void) {
 #define MODS_CTRL  (keyboard_report->mods & MOD_BIT(KC_LCTL) || keyboard_report->mods & MOD_BIT(KC_RCTRL))
 #define MODS_ALT  (keyboard_report->mods & MOD_BIT(KC_LALT) || keyboard_report->mods & MOD_BIT(KC_RALT))
 
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
 float underglow_inc = 0.015f;
 float underglow_dec = 0.0007f;
 float press_speed = 0.0f;
@@ -79,7 +79,7 @@ float press_speed = 0.0f;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint32_t key_timer;
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
     if (record->event.pressed) {
       if(keycode != KC_CAPS && keycode != KC_SLCK) {
           uint16_t scan_code = record->event.key.row * 8 + record->event.key.col;
