@@ -120,6 +120,18 @@ extern uint8_t gcr_breathe;
 extern uint8_t gcr_actual;
 extern uint8_t gcr_actual_last;
 
+#ifdef ENABLE_RIPPLE
+// https://github.com/DarkMio/qmk_firmware/commit/6dc2678e43d5c3032c40ef14dbd8d0de72155495#diff-6e10954982b0c3a872f2ef4928a7a322
+extern uint8_t write_buffer;
+extern uint8_t read_buffer;
+extern float desired_interpolation[][88];
+extern float press_speed;
+extern float underglow_dec;
+extern float underglow_inc;
+extern uint8_t led_anim_mode;
+extern issi3733_led_t led_map[];
+#endif  // ENABLE_RIPPLE
+
 extern uint8_t led_animation_id;
 extern uint8_t led_enabled;
 extern float led_animation_speed;
@@ -135,7 +147,11 @@ extern void *led_setups[];
 extern issi3733_led_t *led_cur;
 extern issi3733_led_t *lede;
 
+#ifdef ENABLE_RIPPLE
+void led_matrix_run(led_setup_t *f);
+#else  // ENABLE_RIPPLE
 void led_matrix_run(void);
+#endif
 void led_matrix_task(void);
 
 void gcr_compute(void);

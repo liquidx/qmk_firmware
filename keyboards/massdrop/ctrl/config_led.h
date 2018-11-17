@@ -46,6 +46,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BREATHE_MIN_STEP            0
 #define BREATHE_MAX_STEP            255
 
+// enable ripple effect
+// copied from https://github.com/DarkMio/qmk_firmware/commit/6dc2678e43d5c3032c40ef14dbd8d0de72155495
+#define ENABLE_RIPPLE 0
+
 //LED Mapping - More practically generated from a spreadsheet program
 //id: ID of the LED (Sync with PCB callouts)
 //x: Physical X coordinate of LED (units do not matter)
