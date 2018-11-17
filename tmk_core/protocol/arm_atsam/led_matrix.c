@@ -257,7 +257,7 @@ issi3733_led_t *led_cur;
 uint8_t led_per_run = 15;
 float breathe_mult;
 
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
 uint8_t led_anim_mode = 0;
 // this has far more entries than it needs, but it's far easier to linearize
 // that way. The higest scan code seems to be 156 as seen in config_led.h
@@ -378,7 +378,7 @@ void led_gradient_op(uint8_t fcur, uint8_t fmax, led_setup_t *f, float* rgb_out)
 #endif
 
 __attribute__ ((weak))
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
 void led_matrix_run(led_setup_t *f)
 #else
 void led_matrix_run(void)
@@ -387,11 +387,11 @@ void led_matrix_run(void)
     float ro;
     float go;
     float bo;
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
 #else
     float px;
     led_setup_t *f = (led_setup_t*)led_setups[led_animation_id];
-#endif
+#endif  // ENABLE_RIPPLE
     uint8_t led_this_run = 0;
 
     if (led_cur == 0) //Denotes start of new processing cycle in the case of chunked processing
@@ -426,7 +426,7 @@ void led_matrix_run(void)
           read_buffer = temp;
         }
         desired_interpolation[0][87] = max(0, desired_interpolation[0][87] - underglow_dec);
- #endif
+ #endif  // ENABLE_RIPPLE
     }
 
     uint8_t fcur = 0;
@@ -460,7 +460,7 @@ void led_matrix_run(void)
         }
         else
         {
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
             float res[3] = {0, 0, 0};
             if(led_anim_mode) {
               led_gradient_op(fcur, fmax, f, res);
@@ -612,11 +612,11 @@ uint8_t led_matrix_init(void)
     //Run led matrix code once for initial LED coloring
     led_cur = 0;
     rgb_matrix_init_user();
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
     led_matrix_run((led_setup_t*)led_setups[led_animation_id]);
 #else
     led_matrix_run();
-#endif    
+#endif
 
     DBGC(DC_LED_MATRIX_INIT_COMPLETE);
 

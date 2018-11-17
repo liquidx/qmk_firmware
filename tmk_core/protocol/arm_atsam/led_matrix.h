@@ -120,7 +120,7 @@ extern uint8_t gcr_breathe;
 extern uint8_t gcr_actual;
 extern uint8_t gcr_actual_last;
 
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
 // https://github.com/DarkMio/qmk_firmware/commit/6dc2678e43d5c3032c40ef14dbd8d0de72155495#diff-6e10954982b0c3a872f2ef4928a7a322
 extern uint8_t write_buffer;
 extern uint8_t read_buffer;
@@ -147,7 +147,7 @@ extern void *led_setups[];
 extern issi3733_led_t *led_cur;
 extern issi3733_led_t *lede;
 
-#ifdef ENABLE_RIPPLE
+#if ENABLE_RIPPLE
 void led_matrix_run(led_setup_t *f);
 #else  // ENABLE_RIPPLE
 void led_matrix_run(void);
