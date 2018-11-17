@@ -26,9 +26,17 @@ led_setup_t leds_teal_salmon[] = {
     { .end = 1 },
 };
 
+//Teal <-> Salmon
+led_setup_t leds_orange_red[] = {
+    { .hs = 0,  .he = 33,  .rs = 0x69,  .re = 0xa7, .gs = 0xd2, .ge = 0xdb, .bs = 0xe7, .be = 0xd8, .ef = EF_NONE },
+    { .hs = 33, .he = 66,  .rs = 0xa7,  .re = 0xf3, .gs = 0xdb, .ge = 0x86, .bs = 0xd8, .be = 0x30, .ef = EF_NONE },
+    { .hs = 66, .he = 100, .rs = 0xf3,  .re = 0xfa, .gs = 0x86, .ge = 0x69, .bs = 0x30, .be = 0x00, .ef = EF_NONE },
+    { .end = 1 },
+};
+
 //Yellow
-led_setup_t leds_yellow[] = {
-    { .hs = 0, .he = 100, .rs = 255, .re = 255, .gs = 255, .ge = 255, .bs = 0, .be = 0, .ef = EF_NONE },
+led_setup_t leds_orange[] = {
+    { .hs = 0, .he = 100, .rs = 0xfa, .re = 0xfa, .gs = 0x69, .ge = 0x69, .bs = 0, .be = 0, .ef = EF_NONE },
     { .end = 1 },
 };
 
@@ -105,12 +113,10 @@ led_setup_t leds_rainbow_s[] = {
 
 void *led_setups[] = {
     leds_teal_salmon,
+    leds_orange_red,
+    leds_orange,
     leds_rainbow_s,
-    leds_rainbow_ns,
-    leds_yellow,
-    leds_red,
-    leds_green,
-    leds_blue,
+    leds_rainbow_ns,    
     leds_white,
     leds_white_with_red_stripe,
     leds_black_with_red_stripe,
