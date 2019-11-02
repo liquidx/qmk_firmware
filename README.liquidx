@@ -1,0 +1,10 @@
+Build
+
+make massdrop/ctrl:default
+make massdrop/ctrl:liquidx
+
+Deploy
+
+./mdloader_mac --first --restart massdrop_ctrl_default.bin
+Keyboard: Hold fn+b
+
