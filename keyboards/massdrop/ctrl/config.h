@@ -125,7 +125,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_LED_FLUSH_LIMIT 10
 #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_REACTIVE_WIDE
 //#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_MULTISPLASH
-#define RGB_MATRIX_STARTUP_HUE 200
+#define RGB_MATRIX_STARTUP_HUE 148
 
 // Disabling certain RGB_MATRIX patterns
 
