@@ -1,10 +1,16 @@
-Build
+# Build
 
+```
 make massdrop/ctrl:default
-make massdrop/ctrl:liquidx
+```
 
-Deploy
+ * If you use ctrl:mac, it will swap alt and cmd.
+ * If you use ctrl:*_md, it will use the old MASSDROP animations and not the QMK ones.
 
-./mdloader_mac --first --restart massdrop_ctrl_default.bin
+# Deploy
+
+```
+./mdloader_mac --first --restart -D massdrop_ctrl_default.bin
 Keyboard: Hold fn+b
+```
 
