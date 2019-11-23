@@ -95,6 +95,14 @@ const point_t k_rgb_matrix_center = RGB_MATRIX_CENTER;
 #    endif
 #endif
 
+#if !defined(RGB_MATRIX_STARTUP_HUE)
+#  define RGB_MATRIX_STARTUP_HUE 0
+#endif
+
+#if !defined(RGB_MATRIX_STARTUP_SATURATION)
+#  define RGB_MATRIX_STARTUP_SATURATION UINT8_MAX
+#endif
+
 bool g_suspend_state = false;
 
 rgb_config_t rgb_matrix_config;
@@ -119,7 +127,7 @@ void eeconfig_update_rgb_matrix_default(void) {
     dprintf("eeconfig_update_rgb_matrix_default\n");
     rgb_matrix_config.enable = 1;
     rgb_matrix_config.mode   = RGB_MATRIX_STARTUP_MODE;
-    rgb_matrix_config.hsv    = (HSV){0, UINT8_MAX, RGB_MATRIX_MAXIMUM_BRIGHTNESS};
+    rgb_matrix_config.hsv    = (HSV){RGB_MATRIX_STARTUP_HUE, RGB_MATRIX_STARTUP_SATURATION, RGB_MATRIX_MAXIMUM_BRIGHTNESS};
     rgb_matrix_config.speed  = UINT8_MAX / 2;
     eeconfig_update_rgb_matrix();
 }
