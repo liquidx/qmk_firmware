@@ -31,5 +31,6 @@
     "[c]": {
         "editor.formatOnSave": false
     },
-    "clangd.arguments": ["--header-insertion=never"]
+    "clangd.arguments": ["--header-insertion=never"],
+    "cmake.sourceDirectory": "/Users/liquidx/o/qmk_firmware_yushakobo/lib/pico-sdk/src/common"
 }
