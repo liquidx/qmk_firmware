@@ -21,12 +21,12 @@ enum layer_names {
     _LOWER,
 };
 
-#define LO_VD LT(_LOWER, KC_VOLD)
+#define LO_VD LT(_LOWER, UG_TOGG)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_BASE] = LAYOUT(
-        KC_ENTER,         UG_HUEU,       UG_NEXT,       UG_TOGG,       KC_MUTE
+        KC_SYSTEM_SLEEP,         UG_TOGG,       UG_NEXT,       UG_HUEU,       KC_MUTE
     ),
     [_LOWER] = LAYOUT(
         _______,       UG_HUEU,       UG_NEXT,       UG_TOGG,       KC_MUTE
